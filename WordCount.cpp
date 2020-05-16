@@ -22,11 +22,10 @@ int CountChars(char* name) {
 }
 
 //统计单词数 
-int CountWords(char* name) {
-	int character = 0;	//字符个数 
+int CountWords(char* name) { 
 	int words = 0;		//单词个数 
-	int t_words = 0;//字母个数 
 	char c;
+	bool flag = false;
 
 	//是否读取到文件末尾
 	if ((fp = fopen(name, "r")) == NULL) {
@@ -34,14 +33,14 @@ int CountWords(char* name) {
 		return -1;
 	}
 	while ((c = getc(fp)) != EOF) {
-		character++;
-		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c == ',')) {
-			t_words++;
-			if (t_words < character) {
-				t_words = character;
-				words++;
-			}
+		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c == '_')) {
+			flag = true;
 		}
+		else if(flag){
+			words++;
+			flag = false;
+		}
+		
 	}
 	fclose(fp);
 	return words;
