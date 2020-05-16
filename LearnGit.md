@@ -47,7 +47,7 @@ git init test
 		//ssh
 		url = git@github.com:Darwlr/gitskills.git
 		
-	c. 拉去线上仓库到本地
+	c. 拉取线上仓库到本地
 		git pull
 		**注意**：
 		 - 每天工作的第一件事就是先 git pull 拉取线上最新版本
