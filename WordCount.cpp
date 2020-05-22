@@ -33,15 +33,17 @@ int CountWords(char* name) {
 		return -1;
 	}
 	while ((c = getc(fp)) != EOF) {
-		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c == '_')) {
+		if (c == ',' || c == ' ' || c == '\n') {
+			if(flag){
+				words++;
+				flag = false;
+			}
+	
+		}else{
 			flag = true;
 		}
-		else if(flag){
-			words++;
-			flag = false;
-		}
-		
 	}
+	if(flag) words++;
 	fclose(fp);
 	return words;
 }
